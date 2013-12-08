@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cv.h>
 #include <highgui.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -14,42 +15,8 @@ int main () {
     FILE * fp = fopen ("waittime.bin", "wb+");
 
     cout<<"Initializing settings and gestures ...\n";
-    cout<<"Please enter memory (RAM) of your computer in gigabytes(GB) : ";
-    cin>>ram;
 
-    if(ram<0.25) {
-        cout<<"Your memory is very low, "<<ram<<" GB.\n";
-        cout<<"The program may not run correctly. Are you sure you want to continue?(y or n).\n";
-        cin>>c;
-        if(c == 'n') {
-            cout<<"To change value run the file 'initialize' again.\n";
-            return -1;
-        }
-    }
-
-    if(ram>6) {
-        cout<<"Your memory seems quite high, "<<ram<<" GB.\n";
-        cout<<"Are you sure that's the correct value?. Are you sure you want to continue?(y or n).\n";
-        cin>>c;
-        if(c == 'n') {
-            cout<<"To change value run the file 'initialize' again.\n";
-            return -1;
-        }
-    }
-
-    if(ram>20) {
-        cout<<"Do you own a supercomputer!!!. Are you sure you want to continue?(y or n).\n";
-        cin>>c;
-        if(c == 'n') {
-            cout<<"To change value run the file 'initialize' again.\n";
-            return -1;
-        }
-        ram = 6;
-        cout<<"RAM value has been set to 6 GB. To change value press ESC and run the file 'initialize' again\n\n";
-        c = cvWaitKey(3000);
-        if(c == 27)return -1;
-    }
-
+    ram = ((size_t)sysconf( _SC_PHYS_PAGES ) * (size_t)sysconf( _SC_PAGE_SIZE )) / (1024 * 1024 * 1024);
     cout<<"Testing the webcam ...\n";
     cout<<"Wait (about 5 to 10 seconds)...\n";
 
