@@ -1,40 +1,42 @@
 !!!! Project Complete !!!
-
+http://www.cse.iitb.ac.in/~aamod/glive/itsp.html
 
 
 *****  --------------------------  *****
 
-All the code files are in the 'live-gesture-recognition' folder.
-Please read this file 'readme.txt' and the User Manual 'manual.pdf' before beginning.
+All the code files are in the 'src' folder.
+Please read this file 'README' and the User Manual 'manual.pdf' before beginning.
 
 *****  --------------------------  *****
 
 Download the .tar.gz or .zip file and uncompress it. It contains the code, the project report and the user manual.
 
 Implementing the code is very simple. However sometimes executable files do not run
-correctly, in which case the code has to be compiled before running. The packages required for compiling the code are gcc, opencv-doc, libcv2.1, linhighgui2.1, libcvaux2.1, libcv-dev, libcvaux-dev, linhighgui-dev, libx11-dev, and libxtst-dev. These packages can be collectively
+correctly, in which case the code has to be compiled before running. The packages required for compiling the code are gcc, opencv-doc, libcv, libhighgui, libcvaux2, libcv-dev, libcvaux-dev, libhighgui-dev, libx11-dev, and libxtst-dev. These packages can be collectively
 installed from the Synaptic Package Manager or using individual system commands:
 
 $ sudo apt-get install [package-name]
 
-After installing all the packages compile the file - install.cpp using the command:
+After installing all the packages compile using, provided the required libraries are installed correctly and up-to-date/
 
-$g++ install.cpp -o install
+$ make
 
-Running the file install inturn compiles all the other required files, provided the required libraries are installed correctly and up-to-date.
-
-$ ./install
-
-
-**** If install runs correctly you dont need to do this ***
-Altenetively, you can compile all the files individually using the command:
-$ g++ `pkg-config opencv --cflags` [filename].cpp -o [filename] `pkg-config opencv --libs` -lX11 -lXtst
+**** If make runs correctly you dont need to do this ***
+Alternatively, you can compile all the files individually using the command:
+$ g++ `pkg-config opencv --cflags` [filename].cpp -o bin/[filename] `pkg-config opencv --libs` -lX11 -lXtst
 The files to be compiled are : initialize.cpp, main.cpp, gesture.cpp, addgesture.cpp, checkgesture.cpp and delgesture.cpp.
 ****  ---------------------------- ***
+
+Change directory to bin/ now:
+$ cd bin
 
 Before beginning run the file initialize:
 $ ./initialize
 
-The main code is run using the file gesture :
+The main code is run using the file gesture:
 $ ./gesture
 
+(cdesai) TODO:
+* Lots of cleanup once I get a better understanding of the code.
+* A basic GUI to start and configure the program.
+* Moar improvments ;)
