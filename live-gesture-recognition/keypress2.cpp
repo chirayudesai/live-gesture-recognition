@@ -6,13 +6,13 @@
 
 using namespace std;
 
-int main(){
-	Display *display;
-	display = XOpenDisplay(NULL);
-	unsigned int keycode1;
-	keycode1 = XKeysymToKeycode(display, XK_space);
-	cout<<keycode1;
-	cout<<endl;
-	return 0;
-	}
-	
+int main() {
+    Display *display;
+    display = XOpenDisplay(NULL);
+    unsigned int keycode1;
+    keycode1 = XKeysymToKeycode(display, XK_space);
+    cout<<keycode1;
+    cout<<endl;
+    return 0;
+}
+
